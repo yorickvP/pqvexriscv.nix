@@ -1,0 +1,23 @@
+diff --git a/sim/src/main/java/spinal/sim/DynamicCompiler.java b/sim/src/main/java/spinal/sim/DynamicCompiler.java
+index c7976497..cef2f2ec 100644
+--- a/sim/src/main/java/spinal/sim/DynamicCompiler.java
++++ b/sim/src/main/java/spinal/sim/DynamicCompiler.java
+@@ -100,9 +100,8 @@ public class DynamicCompiler {
+         StandardJavaFileManager fileManager = compiler.getStandardFileManager(c,
+                 Locale.ENGLISH,
+                 null);
+-        //specify classes output folder
+-//        System.out.println("**********   " + System.getProperty("java.class.path"));
+-        Iterable options = Arrays.asList("-d", classOutputFolder/*, "-classpath", System.getProperty("java.class.path")*/);
++
++        Iterable options = Arrays.asList("-d", classOutputFolder, "-classpath", System.getenv("CLASSPATH"));
+         JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager,
+                 c, options, null,
+                 files);
+@@ -183,4 +182,4 @@ public class DynamicCompiler {
+         //3.Load your class by URLClassLoader, then instantiate the instance, and call method by reflection
+         runIt("/tmp");
+     }
+-}
+\ No newline at end of file
++}

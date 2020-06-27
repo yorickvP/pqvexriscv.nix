@@ -1,5 +1,6 @@
 self: super: rec {
   spinalhdl = self.callPackage ./spinalhdl.nix { };
+  spinalhdl-shell = self.callPackage ./spinalhdl-shell.nix { };
   vexriscv = self.callPackage ./vexriscv.nix { };
   pqvexriscv = self.callPackage ./pqvexriscv.nix { };
 

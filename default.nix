@@ -18,6 +18,7 @@ in with pkgs;
 rec {
   inherit pkgs riscvPkgs;
   nixpkgsSrc = sources.nixpkgs;
+  inherit (pkgs) spinalhdl-shell;
 
   newlib-nano = riscvPkgs.callPackage nix/newlib-nano.nix { };
 

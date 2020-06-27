@@ -19,6 +19,7 @@ stdenvNoCC.mkDerivation {
     mkdir -p $out/share/java $out/bin
     mv pqvexriscv.jar $out/share/java
     makeWrapper ${scala_2_11}/bin/scala $out/bin/pqvexriscvsim \
-      --add-flags "-cp $CLASSPATH:$out/share/java/pqvexriscv.jar mupq.PQVexRiscvSim"
+      --prefix CLASSPATH : $CLASSPATH \
+      --add-flags "-cp $CLASSPATH:$out/share/java/pqvexriscv.jar -toolcp $CLASSPATH mupq.PQVexRiscvSim"
   '';
 }
