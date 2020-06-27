@@ -1,5 +1,6 @@
 let
-  nixpkgs = import <nixpkgs>;
+  sources = import ./nix/sources.nix;
+  nixpkgs = import sources.nixpkgs;
 
   pkgs = nixpkgs { overlays = [ (import ./nix) ]; };
 
@@ -16,6 +17,7 @@ in with pkgs;
 
 rec {
   inherit pkgs riscvPkgs;
+  nixpkgsSrc = sources.nixpkgs;
 
   newlib-nano = riscvPkgs.callPackage nix/newlib-nano.nix { };
 
